@@ -9,10 +9,10 @@ function CoursesCategory({ course }) {
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
         <p>{discription}</p>
+      </div>
         <div className="card-actions justify-end">
           <Link to={`/courseSummary/${id}`}><button className="btn btn-primary">Learn now!</button></Link>
         </div>
-      </div>
     </div>
   )
 }

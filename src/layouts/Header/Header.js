@@ -21,8 +21,15 @@ function Header() {
             </label>
             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
               <li><Link to='/course'>Courses</Link></li>
-              <li><Link to='/FAQ'>FAQ</Link></li>
               <li><Link to='/blogs' >Blog</Link></li>
+              {user?.uid ?
+                <Link onClick={logOutHnadler} className="btn">Log out</Link>
+                :
+                <>
+                  <Link className='btn mb-2 md:hidden' to='/login'>Log in</Link>
+                  <Link className='btn md:hidden' to='/ragister'>Ragister</Link>
+                </>
+              }
             </ul>
           </div >
           <Link id='ko1' className="btn btn-ghost normal-case text-4xl" to='/'>KOKO <span id='ko' className='text-xs'>Learning</span></Link>
@@ -30,18 +37,13 @@ function Header() {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <li><Link to='/course'>Courses</Link></li>
-            <li><Link to='/FAQ'>FAQ</Link></li>
             <li><Link to='/blogs' >Blog</Link></li>
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end hidden lg:block md:block">
           {user?.uid ?
-            <div className='flex' >
+            <div className='flex justify-end' >
               <div className='flex'>
-                <div className='mr-7 justify-center align-middle'>
-                  <input type="checkbox" className="toggle toggle-lg " />
-                  <p>Theme</p>
-                </div>
                 {user.photoURL ?
                   <abbr title={user.displayName} ><img className='w-14 rounded-full mx-2' src={user.photoURL}></img></abbr>
                   :
